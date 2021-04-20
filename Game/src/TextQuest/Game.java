@@ -38,7 +38,7 @@ public class Game {
         }
     }
 
-    private void playForest(){
+    private void playForest(){System.out.println("Вы пришли в локацию лес");
         if (check() != 0) return;
     }
 
