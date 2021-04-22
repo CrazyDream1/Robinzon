@@ -9,15 +9,15 @@ public class Game {
     private double maxTime = 16;
     private double maxDay = 10;
 
-    public void run(){
-        while (currentDay != maxDay){
+    public void run() {
+        while (currentDay != maxDay) {
             playDay();
 
         }
     }
 
-    private int check(){
-        if (currentTime >= maxTime){
+    private int check() {
+        if (currentTime >= maxTime) {
             System.out.println("День закончен");
             return 1;
         }
@@ -25,43 +25,43 @@ public class Game {
         return 0;
     }
 
-    private void playDay(){
+    private void playDay() {
         if (check() != 0) return;
         System.out.println("Пойдете ли вы в лес (0.5 час)?");
         Scanner in = new Scanner(System.in);
         String ans = in.next();
-        if (ans.equals("да")){
+        if (ans.equals("да")) {
             currentTime += 0.5;
             playForest();
-        } else{
+        } else {
             playBase();
         }
     }
 
-    private void playForest(){System.out.println("Вы пришли в локацию лес");
+    private void playForest() {
+        System.out.println("Вы пришли в локацию лес");
         if (check() != 0) return;
     }
 
-    private void playBase(){
+    private void playBase() {
         if (check() != 0) return;
         Scanner in = new Scanner(System.in);
-        String ans = in.next();
-        if (ans.equals("нет")) {
-            System.out.println("хотите ли вы что-то построить");
+        String ans;
+        System.out.println("хотите ли вы что-то построить?");
+        ans = in.next();
+        if (ans.equals("да")) {
+            System.out.println("что вы хотите построить ?\n1 - забор\n2 - шалаш\n3 - ров");
             ans = in.next();
-            if (ans.equals("да")){
-                System.out.println("что вы хотите построить ?\n1 - забор\n2 - шалаш\n3 - ров");
-                ans = in.next();
-                if (ans.equals("1")){
-                    System.out.println("для постройки забора тебе нужно\n3 дерева");
-                }
-                if (ans.equals("2")){
-                    System.out.println("для постройки шалаша тебе нужно\n1 палка\n3 листа");
-                }
-                if (ans.equals("3")){
-                    System.out.println("для постройки рва тебе нужно\n2 камня");
-                }
+            if (ans.equals("1")) {
+                System.out.println("для постройки забора тебе нужно\n3 дерева");
             }
+            if (ans.equals("2")) {
+                System.out.println("для постройки шалаша тебе нужно\n1 палка\n3 листа");
+            }
+            if (ans.equals("3")) {
+                System.out.println("для постройки рва тебе нужно\n2 камня");
+            }
+
         }
     }
 }
