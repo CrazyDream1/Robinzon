@@ -9,4 +9,8 @@ public class Player {
     int happiness = 50;
 
     Inventory inventory;
+
+    Player(){
+        inventory = new Inventory();
+    }
 }

@@ -7,6 +7,44 @@ public class Inventory {
     int currentSize = 0;
     ArrayList<Resource> cells;
     ArrayList<Integer> numberOfElements;
+
+    Inventory() {
+        cells = new ArrayList<>();
+        numberOfElements = new ArrayList<>();
+    }
+
+    boolean UseResource(ArrayList<Resource> r, ArrayList<Integer> amount) {
+        for (int i = 0; i < r.size(); i++) {
+            int id = cells.indexOf(r.get(i));
+            if (id == -1) {
+                return false;
+            }
+            if (amount.get(i) > numberOfElements.get(id)) {
+                return false;
+            }
+        }
+        for (int i = 0; i < r.size(); i++) {
+            int id = cells.indexOf(r.get(i));
+            numberOfElements.set(id, numberOfElements.get(id) - amount.get(i));
+        }
+        return true;
+    }
+
+    void AddResource(Resource a, int amount){
+        if (cells.contains(a)){
+            int x = cells.indexOf(a);
+            numberOfElements.set(x, numberOfElements.get(x) + amount);
+        } else {
+            cells.add(a);
+            numberOfElements.add(amount);
+        }
+    }
+
+    void Print(){
+        for (int i = 0; i < cells.size(); i++) {
+            System.out.println(cells.get(i) + " " + numberOfElements.get(i) + "\n");
+        }
+    }
 }
 /*
  * 0 - Камень
@@ -17,8 +55,12 @@ public class Inventory {
  * 
  * */
  enum Resource{
-    Rock,
-    Wood,
-    Berries,
-    Meat
+    Rock,//камень
+    Wood,//дерево
+    Berries,//ягоды
+    Meat,//мясо
+    Iron,//железо
+    Gold,//золото
+    Leaves,//листья
+    Ground,//земля
  }
