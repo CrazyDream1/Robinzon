@@ -89,6 +89,7 @@ public class Game {
                 ans = in.next();
                 if (ans.equals("1")) {
                     System.out.println("для создания меча нужно\n3 железа\n1 дерево");
+                    System.out.println("вы уверены что хотите это построить ?\n1 - да\n2 - нет");
 
                 }
             }
