@@ -1,5 +1,6 @@
 package TextQuest;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
@@ -89,8 +90,16 @@ public class Game {
                 ans = in.next();
                 if (ans.equals("1")) {
                     System.out.println("для создания меча нужно\n3 железа\n1 дерево");
+                    player.inventory.Print();
                     System.out.println("вы уверены что хотите это построить ?\n1 - да\n2 - нет");
-
+                    ans = in.next();
+                    if (ans.equals("1")){
+                        ArrayList<Resource> res = new ArrayList<>();
+                        ArrayList<Integer> amount = new ArrayList<>();
+                        res.add(Resource.Iron);amount.add(3);
+                        res.add(Resource.Iron);amount.add(1);
+                        player.inventory.UseResource(res, amount);
+                    }
                 }
             }
         }
