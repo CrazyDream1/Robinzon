@@ -97,8 +97,12 @@ public class Game {
                         ArrayList<Resource> res = new ArrayList<>();
                         ArrayList<Integer> amount = new ArrayList<>();
                         res.add(Resource.Iron);amount.add(3);
-                        res.add(Resource.Iron);amount.add(1);
-                        player.inventory.UseResource(res, amount);
+                        res.add(Resource.Wood);amount.add(1);
+                        if (player.inventory.UseResource(res, amount)){
+                            System.out.println("Крафт успешен");
+                        } else {
+                            System.out.println("Нехватка ресурсов");
+                        }
                     }
                 }
             }
