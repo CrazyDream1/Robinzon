@@ -186,9 +186,9 @@ public class Game {
                         ArrayList<Resource> res = new ArrayList<>();
                         ArrayList<Integer> amount = new ArrayList<>();
                         res.add(Resource.Rock);
-                        amount.add(4);
-                        res.add(Resource.Wood);
                         amount.add(3);
+                        res.add(Resource.Wood);
+                        amount.add(2);
                         if (player.inventory.UseResource(res, amount)) {
                             System.out.println("Крафт успешен");
                         } else {
