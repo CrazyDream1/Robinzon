@@ -1,6 +1,7 @@
 package TextQuest;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -10,7 +11,7 @@ public class Game {
     private double maxTime = 16;
     private double maxDay = 10;
 
-    Game(){
+    Game() {
         player = new Player();
     }
 
@@ -46,6 +47,64 @@ public class Game {
     private void playForest() {
         System.out.println("Вы пришли в локацию лес");
         if (check() != 0) return;
+        /*
+        добыча с приспособлениями камня , дерева , ягод
+        охота
+        сбор веток , камней , листьев , ягод
+        выкапывать грядки и садить их
+        пойти в горы или в на озеро
+         */
+        if (check() != 0) return;
+        System.out.println("Пойдете ли вы вы еще куда - нибудь (0.5 час)?");
+        Scanner in = new Scanner(System.in);
+        String ans = in.next();
+        if (ans.equals("да")) {
+            if (check() != 0) return;
+            System.out.println("куда вы пойедте ? \n1 - горы  \n2 - озеро \n(0.5 час)");
+            ans = in.next();
+            if (ans.equals("1")) {
+                currentTime += 0.5;
+                playMountains();
+            }
+            if (ans.equals("2")) {
+                currentTime += 0.5;
+                playLake();
+            }
+        } else {
+            System.out.println("что будете делать\n1 - искать ресурсы \n2 - добывать ресурсы \n3 - охотится ");
+            ans = in.next();
+            if (ans.equals("1")){
+                currentTime += 0.25;
+                Random r = new Random ();
+                int random = r.nextInt(3);
+                if (random == 0) {
+                    System.out.println("вы нашли: 1 камень");
+                    player.inventory.AddResource(Resource.Rock, 1);
+                }
+                if (random == 1) {
+                    System.out.println("вы нашли: 1 дерево");
+                    player.inventory.AddResource(Resource.Wood, 1);
+                }
+                if (random == 2) {
+                    System.out.println("вы нашли: 1 ягоду");
+                    player.inventory.AddResource(Resource.Berries, 1);
+                }
+            }
+            if (ans.equals("2")){
+                // TODO добыча ресурсов в лесу
+            }
+            if (ans.equals("3")){
+                // TODO охота в лесу
+            }
+        }
+    }
+
+    private void playMountains(){
+
+    }
+
+    private void playLake(){
+
     }
 
     private void playBase() {
@@ -89,20 +148,80 @@ public class Game {
                 System.out.println("что вы будете крафтить ?\n1 - меч\n2 - кирка\n3 - топор\n4 - мотыга");
                 ans = in.next();
                 if (ans.equals("1")) {
-                    System.out.println("для создания меча нужно\n3 железа\n1 дерево");
+                    System.out.println("для создания меча нужно\n2 железа\n1 дерево");
                     player.inventory.Print();
-                    System.out.println("вы уверены что хотите это построить ?\n1 - да\n2 - нет");
+                    System.out.println("вы уверены что хотите это создать?\n1 - да\n2 - нет");
                     ans = in.next();
-                    if (ans.equals("1")){
+                    if (ans.equals("1")) {
                         ArrayList<Resource> res = new ArrayList<>();
                         ArrayList<Integer> amount = new ArrayList<>();
-                        res.add(Resource.Iron);amount.add(3);
-                        res.add(Resource.Wood);amount.add(1);
-                        if (player.inventory.UseResource(res, amount)){
+                        res.add(Resource.Iron);
+                        amount.add(2);
+                        res.add(Resource.Wood);
+                        amount.add(1);
+                        if (player.inventory.UseResource(res, amount)) {
                             System.out.println("Крафт успешен");
                         } else {
                             System.out.println("Нехватка ресурсов");
                         }
+                    }
+                }
+                if (ans.equals("2")) {
+                    System.out.println("для создания кирки нужно\n3 камня\n2 дерево");
+                    player.inventory.Print();
+                    System.out.println("вы уверены что хотите это создать?\n1 - да\n2 - нет");
+                    ans = in.next();
+                    if (ans.equals("1")) {
+                        ArrayList<Resource> res = new ArrayList<>();
+                        ArrayList<Integer> amount = new ArrayList<>();
+                        res.add(Resource.Rock);
+                        amount.add(4);
+                        res.add(Resource.Wood);
+                        amount.add(3);
+                        if (player.inventory.UseResource(res, amount)) {
+                            System.out.println("Крафт успешен");
+                        } else {
+                            System.out.println("Нехватка ресурсов");
+                        }
+                    }
+                }
+                if (ans.equals("3")) {
+                    System.out.println("для создания топора нужно\n3 камня\n2 дерево");
+                    player.inventory.Print();
+                    System.out.println("вы уверены что хотите это создать?\n1 - да\n2 - нет");
+                    ans = in.next();
+                    if (ans.equals("1")) {
+                        ArrayList<Resource> res = new ArrayList<>();
+                        ArrayList<Integer> amount = new ArrayList<>();
+                        res.add(Resource.Rock);
+                        amount.add(3);
+                        res.add(Resource.Wood);
+                        amount.add(2);
+                        if (player.inventory.UseResource(res, amount)) {
+                            System.out.println("Крафт успешен");
+                        } else {
+                            System.out.println("Нехватка ресурсов");
+                        }
+                    }
+                }
+                if (ans.equals("4")) {
+                    System.out.println("для создания мотыги нужно\n2 железа\n2 дерево");
+                    player.inventory.Print();
+                    System.out.println("вы уверены что хотите это создать?\n1 - да\n2 - нет");
+                    ans = in.next();
+                    if (ans.equals("1")) {
+                        ArrayList<Resource> res = new ArrayList<>();
+                        ArrayList<Integer> amount = new ArrayList<>();
+                        res.add(Resource.Iron);
+                        amount.add(2);
+                        res.add(Resource.Wood);
+                        amount.add(2);
+                        if (player.inventory.UseResource(res, amount)) {
+                            System.out.println("Крафт успешен");
+                        } else {
+                            System.out.println("Нехватка ресурсов");
+                        }
+
                     }
                 }
             }
