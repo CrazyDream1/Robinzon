@@ -3,11 +3,10 @@ package TextQuest;
 import java.util.ArrayList;
 
 public class Inventory {
-    int maxSize = 100;
+    int maxSize = 35;
     int currentSize = 0;
     ArrayList<Resource> cells;
     ArrayList<Integer> numberOfElements;
-
     Inventory() {
         cells = new ArrayList<>();
         numberOfElements = new ArrayList<>();
@@ -63,4 +62,12 @@ public class Inventory {
     Gold,//золото
     Leaves,//листья
     Ground,//земля
+    Fish,//рыба
+ }
+ enum Tools{
+     Sword,//меч
+     Axe,//топор
+     Pick,//кирка
+     Hoe,//мотыга
+     FishingRod,//удочка
  }
