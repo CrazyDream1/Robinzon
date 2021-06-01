@@ -101,10 +101,48 @@ public class Game {
                 }
             }
             if (ans.equals("2")) {
-                // TODO добыча ресурсов в лесу
+                if (!player.inventory.HasTool(Tools.Axe)){
+                    System.out.println("у тебя нет топора\nты можешь пойти скрафтить");
+                    playForest();
+                    return;
+            }
+                currentTime += 2;
+                Random r = new Random();
+                int random = r.nextInt(3);
+                if (random == 0) {
+                    System.out.println("вы нашли: 1 дерево");
+                    player.inventory.AddResource(Resource.Wood, 1);
+                }
+                if (random == 1) {
+                    System.out.println("вы нашли: 2 дерева");
+                    player.inventory.AddResource(Resource.Wood, 2);
+                }
+                if (random == 2) {
+                    System.out.println("вы нашли: 3 дерева");
+                    player.inventory.AddResource(Resource.Wood, 3);
+                }
             }
             if (ans.equals("3")) {
-                // TODO охота в лесу
+                if (!player.inventory.HasTool(Tools.Sword)){
+                    System.out.println("у тебя нет топора\nты можешь пойти скрафтить");
+                    playForest();
+                    return;
+                }
+                currentTime += 5;
+                Random r = new Random();
+                int random = r.nextInt(3);
+                if (random == 0) {
+                    System.out.println("вы добыли: 1 мясо");
+                    player.inventory.AddResource(Resource.Meat, 1);
+                }
+                if (random == 1) {
+                    System.out.println("вы добыли: 2 мяса");
+                    player.inventory.AddResource(Resource.Meat, 2);
+                }
+                if (random == 2) {
+                    System.out.println("вы добыли: 3 мяса");
+                    player.inventory.AddResource(Resource.Meat, 3);
+                }
             }
         }
         playForest();
