@@ -18,7 +18,10 @@ public class Game {
     public void run() {
         while (currentDay != maxDay) {
             playDay();
-
+            if (currentTime >= maxTime) {
+                currentDay++;
+                currentTime = 0;
+            }
         }
     }
 
@@ -60,15 +63,22 @@ public class Game {
         String ans = in.next();
         if (ans.equals("да")) {
             if (check() != 0) return;
-            System.out.println("куда вы пойедте ? \n1 - горы  \n2 - озеро \n(0.5 час)");
+            System.out.println("куда вы пойедте ? \n1 - горы  \n2 - озеро \n3 - база \n(0.5 час)");
             ans = in.next();
             if (ans.equals("1")) {
                 currentTime += 0.5;
                 playMountains();
+                return;
             }
             if (ans.equals("2")) {
                 currentTime += 0.5;
                 playLake();
+                return;
+            }
+            if (ans.equals("3")) {
+                currentTime += 0.5;
+                playBase();
+                return;
             }
         } else {
             System.out.println("что будете делать\n1 - искать ресурсы \n2 - добывать ресурсы \n3 - охотится ");
@@ -97,6 +107,7 @@ public class Game {
                 // TODO охота в лесу
             }
         }
+        playForest();
     }
 
     private void playMountains() {
@@ -349,5 +360,7 @@ public class Game {
                 }
             }
         }
+        playBase();
     }
+
 }

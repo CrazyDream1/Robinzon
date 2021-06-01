@@ -24,12 +24,16 @@ public class Inventory {
         }
         for (int i = 0; i < r.size(); i++) {
             int id = cells.indexOf(r.get(i));
+            currentSize -= amount.get(i);
             numberOfElements.set(id, numberOfElements.get(id) - amount.get(i));
         }
         return true;
     }
 
     void AddResource(Resource a, int amount){
+        if (currentSize + amount > maxSize) {
+            return;
+        }
         if (cells.contains(a)){
             int x = cells.indexOf(a);
             numberOfElements.set(x, numberOfElements.get(x) + amount);
@@ -37,6 +41,7 @@ public class Inventory {
             cells.add(a);
             numberOfElements.add(amount);
         }
+        currentSize += amount;
     }
 
     void Print(){
