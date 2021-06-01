@@ -46,18 +46,21 @@ public class Inventory {
     }
 
     void AddTool(Tools tool){
-        // TODO
+        tools.add(tool);
+        currentSize += 2;
     }
 
     boolean HasTool(Tools tool){
         return tools.contains(tool);
     }
 
-    void Print(){
+    void Print() {
         for (int i = 0; i < cells.size(); i++) {
             System.out.println(cells.get(i) + " " + numberOfElements.get(i) + "\n");
         }
-        // TODO вывод на экран имеющихся приспособлений
+        for (int i = 0; i < tools.size(); i++) {
+            System.out.println(tools.get(i));
+        }
     }
 }
 /*
