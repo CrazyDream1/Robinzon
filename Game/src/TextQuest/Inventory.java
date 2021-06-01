@@ -7,6 +7,7 @@ public class Inventory {
     int currentSize = 0;
     ArrayList<Resource> cells;
     ArrayList<Integer> numberOfElements;
+    ArrayList<Tools> tools;
     Inventory() {
         cells = new ArrayList<>();
         numberOfElements = new ArrayList<>();
@@ -44,10 +45,19 @@ public class Inventory {
         currentSize += amount;
     }
 
+    void AddTool(Tools tool){
+        // TODO
+    }
+
+    boolean HasTool(Tools tool){
+        return tools.contains(tool);
+    }
+
     void Print(){
         for (int i = 0; i < cells.size(); i++) {
             System.out.println(cells.get(i) + " " + numberOfElements.get(i) + "\n");
         }
+        // TODO вывод на экран имеющихся приспособлений
     }
 }
 /*

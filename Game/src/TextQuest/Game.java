@@ -184,6 +184,11 @@ public class Game {
         System.out.println("что вы будете делать ?\n1 - рыбачить \n2 - искать листву");
         ans = in.next();
         if (ans.equals("1")) {
+            if (!player.inventory.HasTool(Tools.FishingRod)){
+                System.out.println("");
+                playLake();
+                return;
+            }
             currentTime += 2.25;
             Random r = new Random();
             int random = r.nextInt(3);
@@ -274,7 +279,7 @@ public class Game {
                         amount.add(1);
                         if (player.inventory.UseResource(res, amount)) {
                             System.out.println("Крафт успешен");
-
+                            player.inventory.AddTool(Tools.Sword);
                         } else {
                             System.out.println("Нехватка ресурсов");
                         }
