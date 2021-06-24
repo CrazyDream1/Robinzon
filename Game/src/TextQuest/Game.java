@@ -86,7 +86,7 @@ public class Game {
             if (ans.equals("1")) {
                 currentTime += 0.25;
                 Random r = new Random();
-                int random = r.nextInt(3);
+                int random = r.nextInt(5);
                 if (random == 0) {
                     System.out.println("вы нашли: 1 камень");
                     player.inventory.AddResource(Resource.Rock, 1);
@@ -98,6 +98,14 @@ public class Game {
                 if (random == 2) {
                     System.out.println("вы нашли: 1 ягоду");
                     player.inventory.AddResource(Resource.Berries, 1);
+                }
+                 if (random == 3) {
+                    System.out.println("вы нашли: 1 семена картофеля");
+                    player.inventory.AddResource(Resource.potato_seeds, 1);
+                }
+                if (random == 4) {
+                    System.out.println("вы нашли: 1 семена марковки");
+                    player.inventory.AddResource(Resource.carrot_seeds, 1);
                 }
             }
             if (ans.equals("2")) {

@@ -81,7 +81,10 @@ public class Inventory {
     Leaves,//листья
     Ground,//земля
     Fish,//рыба
- }
+    potato_seeds,//семена картофеля
+    carrot_seeds,//семена марковки
+
+    }
  enum Tools{
      Sword,//меч
      Axe,//топор

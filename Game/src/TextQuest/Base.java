@@ -16,18 +16,42 @@ public class Base {
 
     // Строим здание
     public void Build(Building building){
-        // TODO
+        if (Building.GardenBed == building) {
+            farm.AddGardenBed();
+        }
+        buildings.add(building);
     }
 
     // Положить ресурсы в инвентарь базы
-    public boolean PutResources(Inventory inventory1, int amount){
-        // TODO
+    public boolean PutResources(Inventory inventory1 , Resource resource, int amount){
+        ArrayList<Resource> r = new ArrayList<>();
+        r.add(resource);
+        ArrayList<Integer> a = new ArrayList<>();
+        a.add(amount);
+        boolean b =  inventory1.UseResource(r,a);
+        if (b){
+            inventory.AddResource(resource,amount);
+            System.out.println("успешно");
+            return true;
+        }else{
+            System.out.println("незватка ресурсов");
+        }
         return false;
     }
-
     // Взять ресурсы из инвентаря базы
-    public boolean GetResources(Inventory inventory1, int amount){
-        // TODO
+    public boolean GetResources(Inventory inventory1 ,Resource resource, int amount){
+        ArrayList<Resource> r = new ArrayList<>();
+        r.add(resource);
+        ArrayList<Integer> a = new ArrayList<>();
+        a.add(amount);
+        boolean b =  inventory.UseResource(r,a);
+        if (b){
+            inventory1.AddResource(resource,amount);
+            System.out.println("успешно");
+            return true;
+        }else{
+            System.out.println("незватка ресурсов");
+        }
         return false;
     }
 }
